@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Confirm Log Out?</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" integrity="sha384-oOE/3m0LUMPub4kaC09mrdEhIc+e3exm4xOGxAmuFXhBNF4hcg/6MiAXAf5p0P56" crossorigin="anonymous"/>
+  </head>
+  <body>
+     <div class="container">
+      <form class="form-signin" method="post" th:action="@{/logout}">
+        <h2 class="form-signin-heading">Are you sure you want to log out?</h2>
+<input name="_csrf" type="hidden" value="_jzyZaDr9D7HivWFl3p-rNjUCnrljYO10svF34nE_QA5UarBnQzBAcSOxQ7q7sXk81dKz-rnJxuGveWY6qnx5r_8yzQKZ8j0" />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log Out</button>
+      </form>
+    </div>
+  </body>
+</html>
