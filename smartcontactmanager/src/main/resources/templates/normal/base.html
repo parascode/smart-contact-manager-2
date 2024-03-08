@@ -23,7 +23,7 @@
 </head>
 <body>
 	<!-- navbar -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary">
 		<a class="navbar-brand" href="#">Smart Contact Manager</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
@@ -45,18 +45,21 @@
 		</div>
 	</nav>
 	<!-- navbar ends -->
-	<div class="sidebar">
+	<div class="sidebar mt-2">
 		<span class="crossBtn" onclick="toggleSidebar()">&times;</span>
-		<a href="#" class="item"><i class="fa-solid fa-house"></i> Home</a>
+		<a th:href="@{/user/index}" class="item"><i class="fa-solid fa-house"></i> Home</a>
 		 <a href="#" class="item"><i class="fa-solid fa-address-book"></i> View Contacts</a> 
-			<a href="#" class="item"><i class="fa-solid fa-pencil"></i> Add Contact</a> 
+			<a th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-pencil"></i> Add Contact</a> 
 			<a href="#" class="item"><i class="fa-solid fa-user"></i> Your Profile</a> 
 			<a href="#" class="item"><i class="fa-solid fa-gears"></i> Settings</a> 
-			<a href="#" class="item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+			<a th:href="@{/logout}" class="item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
 			<div class="divider"></div>
 	</div>
 
-	<div class="content">
+	
+	
+	<div class="content mt-5">
+	
 		<i class="fa-solid fa-bars" onClick="toggleSidebar()"></i>
 		<div th:replace="${content}"></div>
 	</div>

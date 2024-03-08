@@ -7,7 +7,7 @@ const toggleSidebar = () => {
     //if opened then
     // write code to close
     $(".sidebar").css("display", "none");
-    $(".content").css("margin-left", "2%");
+    $(".content").css("margin-left", "0%");
   } else {
     // if closed
     // write code to open
