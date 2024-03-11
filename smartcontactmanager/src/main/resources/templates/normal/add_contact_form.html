@@ -34,7 +34,7 @@
 									<i class="fa-solid fa-plus"></i>
 								</div>
 							</div>
-							<input type="text" class="form-control" name="name" id="name" placeholder="Enter Name of Contact"/>
+							<input required type="text" class="form-control" name="name" id="name" placeholder="Enter Name of Contact"/>
 						</div>
 						<div class="input-group mt-3">
 							<div class="input-group-prepend">
@@ -42,13 +42,13 @@
 									<i class="fa-solid fa-user-alt"></i>
 								</div>
 							</div>
-							<input type="text" class="form-control" name="secondName" id="secondName" placeholder="Enter Nick Name of Contact"/>
+							<input required type="text" class="form-control" name="secondName" id="secondName" placeholder="Enter Nick Name of Contact"/>
 						</div>
 						<div class="input-group mt-3">
 							<div class="input-group-prepend">
 								<div class="input-group-text">@</div>
 							</div>
-							<input type="email" class="form-control" name="email" id="email" placeholder="Enter Email Address"/>
+							<input required type="email" class="form-control" name="email" id="email" placeholder="Enter Email Address"/>
 						</div>
 						<div class="input-group mt-3">
 							<div class="input-group-prepend">
@@ -56,7 +56,7 @@
 									<i class="fa-solid fa-phone"></i>
 								</div>
 							</div>
-							<input type="number" class="form-control" name="phone" id="phone" placeholder="Enter Phone Number"/>
+							<input required min="10" type="number" class="form-control" name="phone" id="phone" placeholder="Enter Phone Number"/>
 						</div>
 						<div class="input-group mt-3">
 							<div class="input-group-prepend">
@@ -64,10 +64,10 @@
 									<i class="fa-solid fa-briefcase"></i>
 								</div>
 							</div>
-							<input type="text" class="form-control" name="work" id="work" placeholder="Enter Your Work"/>
+							<input required type="text" class="form-control" name="work" id="work" placeholder="Enter Your Work"/>
 						</div>
 						<div class="form-group mt-3">
-							<textarea name="description" id="description"  rows="10" class="form-control" placeholder="Enter something about this contact!!"></textarea>
+							<textarea name="description" id="tiny"  rows="10" class="form-control" placeholder="Enter something about this contact!!"></textarea>
 						</div>
 						<div class="form-group mt-3">
 							<input type="file" name="profile" id="image"/>
@@ -84,6 +84,12 @@
 				</div>
 			</div>
 		</div>
+		<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+  tinymce.init({
+    selector: 'textarea#tiny'
+  });
+</script>
 	</section>
 </body>
 </html>
