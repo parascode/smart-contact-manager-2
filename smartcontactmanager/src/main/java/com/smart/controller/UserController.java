@@ -123,11 +123,62 @@ public class UserController {
 		
 		return "normal/show_contacts";
 	}
-	@GetMapping("{cId}/contact")
-	public String showContact(@PathVariable("cId") int cId) {
+	@GetMapping("/{cId}/contact")
+	public String showContact(@PathVariable("cId") int cId, Model m, Principal principal) {
+				
 		System.out.println(cId);
 		Contact contact = this.contactRepository.findById(cId).get();
-		System.out.println("CONTACT "+contact);
+		User user = this.userRepository.getUserByUserName(principal.getName());
+		if(contact.getUser().getId() == user.getId()) {
+			
+			m.addAttribute("title", contact.getName());
+			m.addAttribute("contact" ,contact);
+		}else {
+			m.addAttribute("message", new Message("You can't access this contact :/", "danger"));
+		}
+		
 		return "normal/contact";
+	}
+	
+	@PostMapping("/delete/{cId}")
+	public String delete(@PathVariable("cId") int cId) {
+		this.contactRepository.deleteById(cId);
+		return "redirect:/user/show-contacts/0";
+	}
+	
+	@PostMapping("/update/{cId}")
+	public String update(@PathVariable("cId") int cId, Model m) {
+		
+		Contact contact = this.contactRepository.findById(cId).get();
+		
+		m.addAttribute("title", "Update - " +contact.getName());
+		m.addAttribute("contact" ,contact);
+		return "normal/update";
+	}
+	@PostMapping("/process-update")
+	public String processUpdateForm(@ModelAttribute("contact") Contact contact,@RequestParam("profile") MultipartFile file, Principal principal) {
+		
+		Contact tempContact = this.contactRepository.findById(contact.getcId()).get();
+		if(file.isEmpty()) {
+			contact.setImage(tempContact.getImage());
+		}
+		try {
+			
+			
+		File saveFile = new ClassPathResource("static/img").getFile();
+		 Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
+		 Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+		 contact.setImage(file.getOriginalFilename());
+		 if(tempContact.getImage() != "contact.png") {
+			 
+			 Files.delete(Paths.get(saveFile.getAbsolutePath() + File.separator + tempContact.getImage()));
+		 }
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		contact.setUser(userRepository.getUserByUserName(principal.getName()));
+		this.contactRepository.save(contact);
+		return "redirect:/user/"+contact.getcId()+"/contact";
 	}
 }

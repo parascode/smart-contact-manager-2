@@ -28,8 +28,13 @@
 				      <td ><a th:href="@{'/user/'+${c.cId}+'/contact'}" th:text="${c.email}"></a></td>
 				      <td th:text="${c.phone}">@mdo</td>
 				      <td>
-				      	<button class="btn btn-danger btn-sm">DELETE</button>
-				      	<button class="btn btn-primary btn-sm">UPDATE</button>
+				      <form th:action="@{'/user/delete/'+${c.cId}}" method="post">
+				      	<button class="btn btn-danger btn-sm" th:href="@{'/user/delete/'+${c.cId}}" >DELETE</button>
+				      
+				      </form>
+				      <form th:action="@{'/user/update/'+${c.cId}}" method="post">
+				      	<button class="btn btn-primary btn-sm mt-1"  >UPDATE</button>
+				      </form>
 				      </td>
 				    </tr>
 				    

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::fragment(~{::section})">
 <head>
 	<meta charset="UTF-8" />
-	<title>Add Contact</title>
+	<title>Update Form</title>
 </head>
 <body>
 	<section>
@@ -16,17 +16,21 @@
 					<!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block> -->
 					<th:block th:text="${@sessionHelper.removeAttribute()}"></th:block>
 				</div>
-						<h1 class="text-center">Add Contact</h1>
+						<h1 class="text-center">Update Form</h1>
 						
 				<div class="container-fluid mt1">
 				<div class="row mt-2">
 					<div class="col-md-8 offset-md-2">
 						<form action=""
-								th:action="@{/user/handle-add-contact}"
+								th:action="@{/user/process-update}"
 								method="POST"
 								enctype="multipart/form-data"
 								th:object="${contact}"
 								class="mt-2">
+						
+						<div class="input-group">
+							<input th:value="${contact.cId}" type="hidden" class="form-control" name="cId"></input>
+						</div>
 						
 						<div class="input-group mt-3">
 							<div class="input-group-prepend">
@@ -34,7 +38,7 @@
 									<i class="fa-solid fa-plus"></i>
 								</div>
 							</div>
-							<input required type="text" class="form-control" name="name" id="name" placeholder="Enter Name of Contact"/>
+							<input required th:value="${contact.name}" type="text" class="form-control" name="name" id="name" placeholder="Enter Name of Contact"/>
 						</div>
 						<div class="input-group mt-3">
 							<div class="input-group-prepend">
@@ -42,13 +46,13 @@
 									<i class="fa-solid fa-user-alt"></i>
 								</div>
 							</div>
-							<input required type="text" class="form-control" name="secondName" id="secondName" placeholder="Enter Nick Name of Contact"/>
+							<input required th:value="${contact.secondName}" type="text" class="form-control" name="secondName" id="secondName" placeholder="Enter Nick Name of Contact"/>
 						</div>
 						<div class="input-group mt-3">
 							<div class="input-group-prepend">
 								<div class="input-group-text">@</div>
 							</div>
-							<input required type="email" class="form-control" name="email" id="email" placeholder="Enter Email Address"/>
+							<input required th:value="${contact.email}" type="email" class="form-control" name="email" id="email" placeholder="Enter Email Address"/>
 						</div>
 						<div class="input-group mt-3">
 							<div class="input-group-prepend">
@@ -56,7 +60,7 @@
 									<i class="fa-solid fa-phone"></i>
 								</div>
 							</div>
-							<input required min="10" type="number" class="form-control" name="phone" id="phone" placeholder="Enter Phone Number"/>
+							<input required th:value="${contact.phone}" min="10" type="number" class="form-control" name="phone" id="phone" placeholder="Enter Phone Number"/>
 						</div>
 						<div class="input-group mt-3">
 							<div class="input-group-prepend">
@@ -64,17 +68,20 @@
 									<i class="fa-solid fa-briefcase"></i>
 								</div>
 							</div>
-							<input required type="text" class="form-control" name="work" id="work" placeholder="Enter Your Work"/>
+							<input required th:value="${contact.work}" type="text" class="form-control" name="work" id="work" placeholder="Enter Your Work"/>
 						</div>
 						<div class="form-group mt-3">
-							<textarea name="description" id="tiny"  rows="10" class="form-control" placeholder="Enter something about this contact!!"></textarea>
+							<textarea th:text="${contact.description}" name="description" id="tiny"  rows="10" class="form-control" placeholder="Enter something about this contact!!"></textarea>
 						</div>
 						<div class="form-group mt-3">
 							<input type="file" name="profile" id="image"/>
+							<img th:src="'/img/'+${contact.image}" style="height:250px; width:250px; border-radius:50%;" alt="Profile photo" />
+							<p>Upload new Profile image</p>
 						</div>
 						
+						
 						<div class="container text-center">
-							<button class="btn btn-outline-primary" type="submit">Save Contact</button>
+							<button class="btn btn-outline-primary" type="submit">Update Contact</button>
 						</div>
 						
 						
