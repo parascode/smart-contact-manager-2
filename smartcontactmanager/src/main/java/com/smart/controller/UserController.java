@@ -181,4 +181,10 @@ public class UserController {
 		this.contactRepository.save(contact);
 		return "redirect:/user/"+contact.getcId()+"/contact";
 	}
+	@GetMapping("/profile")
+	public String profile(Model m, Principal principal) {
+		m.addAttribute("title", "Profile Page");
+		return "normal/profile";
+	}
+	
 }
