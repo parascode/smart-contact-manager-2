@@ -1,6 +1,7 @@
 package com.smart.entities;
 
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -29,6 +30,33 @@ public class Contact {
 	
 	@ManyToOne
 	@JsonIgnore
+=======
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "CONTACT")
+public class Contact {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int cId;
+	private String name;
+	private String email;
+	private String secondName;
+	private String phone;
+	private String image;
+	@Column(length = 10000)
+	private String description;
+	private String work;
+	
+	@ManyToOne
+>>>>>>> branch 'main' of https://github.com/parascode/smart-contact-manager.git
 	private User user;
 
 	public Contact() {

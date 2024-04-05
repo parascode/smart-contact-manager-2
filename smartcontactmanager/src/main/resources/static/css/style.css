@@ -93,6 +93,7 @@ body{
 	height:50px;
 	border-radius: 50%;
 }
+<<<<<<< HEAD
 /* search */
 .search-container{
 	position: relative;
@@ -102,6 +103,10 @@ body{
 	width:100%;
 	visibility: none;
 }
+=======
+
+
+>>>>>>> branch 'main' of https://github.com/parascode/smart-contact-manager.git
 
 
 

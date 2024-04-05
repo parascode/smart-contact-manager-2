@@ -15,6 +15,7 @@ const toggleSidebar = () => {
     $(".content").css("margin-left", "20%");
   }
 };
+<<<<<<< HEAD
 
 const search = () => {
   let query = $("#search-input").val();
@@ -42,3 +43,5 @@ const search = () => {
     $(".search-results").show();
   }
 };
+=======
+>>>>>>> branch 'main' of https://github.com/parascode/smart-contact-manager.git
