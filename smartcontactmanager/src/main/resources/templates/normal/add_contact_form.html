@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::fragment(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Add Contact</title>
+</head>
+<body>
+	<section>
+		<div class="card ml-2 mr-2">
+			<div class="card-body">
+						<!-- Handling messages  -->
+				<div th:if="${session.message}" class="container text-center" >
+					<div class="alert " role="alert" th:classappend="${'alert-' + session.message.type}" >
+					  <span th:text="${session.message.content}"></span>
+					</div>
+					<!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block> -->
+					<th:block th:text="${@sessionHelper.removeAttribute()}"></th:block>
+				</div>
+						<h1 class="text-center">Add Contact</h1>
+						
+				<div class="container-fluid mt1">
+				<div class="row mt-2">
+					<div class="col-md-8 offset-md-2">
+						<form action=""
+								th:action="@{/user/handle-add-contact}"
+								method="POST"
+								enctype="multipart/form-data"
+								th:object="${contact}"
+								class="mt-2">
+						
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa-solid fa-plus"></i>
+								</div>
+							</div>
+							<input required type="text" class="form-control" name="name" id="name" placeholder="Enter Name of Contact"/>
+						</div>
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa-solid fa-user-alt"></i>
+								</div>
+							</div>
+							<input required type="text" class="form-control" name="secondName" id="secondName" placeholder="Enter Nick Name of Contact"/>
+						</div>
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">@</div>
+							</div>
+							<input required type="email" class="form-control" name="email" id="email" placeholder="Enter Email Address"/>
+						</div>
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa-solid fa-phone"></i>
+								</div>
+							</div>
+							<input required min="10" type="number" class="form-control" name="phone" id="phone" placeholder="Enter Phone Number"/>
+						</div>
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa-solid fa-briefcase"></i>
+								</div>
+							</div>
+							<input required type="text" class="form-control" name="work" id="work" placeholder="Enter Your Work"/>
+						</div>
+						<div class="form-group mt-3">
+							<textarea name="description" id="tiny"  rows="10" class="form-control" placeholder="Enter something about this contact!!"></textarea>
+						</div>
+						<div class="form-group mt-3">
+							<input type="file" name="profile" id="image"/>
+						</div>
+						
+						<div class="container text-center">
+							<button class="btn btn-outline-primary" type="submit">Save Contact</button>
+						</div>
+						
+						
+						</form>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.tiny.cloud/1/f8thyhl1yqlva4y9n59nzgqq2jiw6xpzzsohxe65buosg1qv/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+  tinymce.init({
+    selector: 'textarea#tiny'
+  });
+</script>
+	</section>
+</body>
+</html>
